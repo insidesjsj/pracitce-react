@@ -1,0 +1,50 @@
+<script>
+// n월씩 이동하기
+function moveMonth(date, moveMonth) {
+  const curTimestamp = date.getTime();
+  const curMonth = date.getMonth();
+
+  const resDate = new Date(curTimestamp);
+  resDate.setMonth(curMonth + moveMonth);
+  return resDate;
+}
+
+const dateA = new Date("2000-10-10");
+console.log(`A: ${dateA}`)  // A: Tue Oct 10 2000 09:00:00 GMT+0900 (한국 표준시)
+
+const dateB = moveMonth(dateA, 2);
+console.log(`B: ${dateB}`); // B: Sun Dec 10 2000 09:00:00 GMT+0900 (한국 표준시)
+
+const dateC = moveMonth(dateA, -2);
+console.log(`C: ${dateC}`); // C: Thu Aug 10 2000 09:00:00 GMT+0900 (한국 표준시)
+
+// 배열에서 이번 달에 해당하는 날짜만 필터링 하기
+function filterThisMonth(pivotDate, dateArray) {
+  const year = pivotDate.getFullYear();
+  const month = pivotDate.getMonth();
+
+  const startDay = new Date(year, month, 1, 0, 0, 0, 0);    // 이번 달의 가장 빠른 시간
+  const endDay = new Date(year, month + 1, 0, 23, 59, 59);  // 이번 달의 가장 늦은 시간 (다음 달 0일의 23시 59분 59초)
+
+  const resArr = dateArray.filter(  // filter 메소드를 이용해 이번 달에 속하는 요소만 필터링
+    (it) =>
+      startDay.getTime() <= it.getTime() &&
+      it.getTime() <= endDay.getTime()
+  );
+  return resArr;
+}
+
+const dateArray = [
+  new Date("2000-10-1"),
+  new Date("2000-10-31"),
+  new Date("2000-11-1"),
+  new Date("2000-9-30"),
+  new Date("1900-10-11"),
+];
+const today = new Date("2000-10-10/00:00:00");
+const filteredArray = filterThisMonth(today, dateArray);
+
+console.log(filteredArray);
+// [Sun Oct 01 2000 00:00:00 GMT+0900 (한국 표준시),
+// Tue Oct 31 2000 09:00:00 GMT+0900 (한국 표준시)]
+</script>

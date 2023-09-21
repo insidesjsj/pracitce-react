@@ -1,0 +1,16 @@
+<script>
+// reduce
+// 배열 요소를 모두 순회하면서 인수로 제공한 함수를 실행 -> 단 하나의 결괏값만 반환하는 메소드
+// map 메소드와 유사하지만 하나의 결과만을 반환한다는 차이점
+/*
+arr.reduce( ( acc, item, index, array ) => {
+  (...)
+}, initial);
+*/
+// acc : 누산기. 이전 함수의 호출 결과를 저장. 두번째 인수 initial이 acc의 초깃값
+
+let arr = [1, 2, 3, 4, 5];
+let result = arr.reduce((acc, item) => acc + item, 0);
+
+console.log(result);
+</script>

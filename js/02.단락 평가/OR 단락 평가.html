@@ -1,0 +1,27 @@
+<script>
+function calcA() {
+    console.log("a");
+    return true;
+}
+function calcB() {
+    console.log("b");
+    return false;
+}
+console.log(calcA() || calcB());
+// a
+// true
+
+const name = "안성준" || undefined;
+
+console.log(name);  // 안성준
+
+// OR 단락 평가와 null 병합 연산자
+const varA = 0;
+const varB = '안성준';
+
+const resultA = varA || varB;
+const resultB = varA ?? varB;   // varA가 null이나 undefined이면 varB이고, 아니면 varA
+
+console.log(resultA);   // 안성준
+console.log(resultB);   // 0
+</script>

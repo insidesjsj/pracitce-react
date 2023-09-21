@@ -1,0 +1,26 @@
+<script>
+function func({ name, age, address }) {
+  console.log(name, age, address);
+}
+
+let person = {
+  name: "안성준",
+  age: 28,
+  address: "서울시"
+};
+
+func(person); // 안성준 28 서울시
+
+// 구조분해할당과 동시에 변수명 변경
+function func1({ name: n, age: a, address: d }) {
+  console.log(n, a, d);
+}
+
+let person1 = {
+  name: "안성준",
+  age: 28,
+  address: "서울시"
+};
+
+func1(person1); // 안성준 28 서울시
+</script>

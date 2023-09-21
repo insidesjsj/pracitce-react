@@ -1,0 +1,31 @@
+<script>
+// 배열에서 값을 하나씩 변수에 할당시
+let arr = [1, 2, 3];
+
+let one = arr[0];
+let two = arr[1];
+let three = arr[2];
+
+console.log(one, two, three); // 1, 2, 3
+
+// 구조 분해 할당 사용
+let arr1 = [1, 2, 3];
+let [four, five, six] = arr1;
+
+console.log(four, five, six); // 1, 2, 3
+
+
+// 배열의 길이 < 할당할 변수
+// 오류 발생 X, but 배열의 길이를 넘는 변수에는 undefined가 할당
+let arr2 = [1, 2];
+let [num1, num2, num3] = arr2;
+
+console.log(num1, num2, num3);  // 1, 2, undefined
+
+// 배열의 길이 > 할당할 변수
+// 오류발생 X
+let arr3 = [1, 2, 3];
+let [num4, num5] = arr3;
+
+console.log(num4, num5); // 1, 2
+</script>

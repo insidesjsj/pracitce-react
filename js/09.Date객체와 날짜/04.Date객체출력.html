@@ -1,0 +1,17 @@
+<script>
+const today = new Date(2000, 9, 10, 22);
+
+// toString
+// 현재 저장된 시간을 문자열로 반환
+console.log(today.toString());  // Tue Oct 10 2000 22:00:00 GMT+0900 (한국 표준시)
+
+// toDateString
+// 시간을 제외하고 현재의 날짜만 출력
+console.log(today.toDateString());  // Tue Oct 10 2000
+
+// toLocaleString
+// toLocaleDateString
+// 현지화 된 날짜와 시간을 반환
+console.log(today.toLocaleString());      // 2000. 10. 10. 오후 10:00:00
+console.log(today.toLocaleDateString());  // 2000. 10. 10.
+</script>

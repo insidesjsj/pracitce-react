@@ -1,0 +1,16 @@
+<script>
+// find
+// 인수로 판별함수를 전달, 배열에서 이를 만족하는 요소를 찾느다.
+// findindex와 달리 인덱스가 아닌 요소를 찾는다
+
+let arr = [
+  { name: "안성준" },
+  { name: "이승훈" },
+  { name: "이윤수" },
+  { name: "임성진" }
+]
+
+let element = arr.find((item) => item.name === "안성준");
+console.log(element); // {name: '안성준'}
+</script>
+

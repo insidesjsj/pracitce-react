@@ -1,0 +1,16 @@
+<script>
+// Object.values
+// 객체 프로퍼티의 value를 배열로 반환
+
+let person = {
+  name: '안성준',
+  age: '28',
+  location: '서울시'
+};
+
+const valueArr = Object.values(person);
+
+for(let value of valueArr) {
+  console.log(value);
+}
+</script>

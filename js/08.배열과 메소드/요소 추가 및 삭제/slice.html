@@ -1,0 +1,29 @@
+<script>
+// slice
+// 가위처럼 기존 배열에서 특정 범위를 잘라 새로운 배열 반환
+// @@ 원본 배열은 수정되지 않는다. @@
+// arr.slice(start, end);
+// start index ~ end index 전까지
+
+const arr = [1, 2, 3];
+const sliced = arr.slice(0, 2);
+
+console.log(arr);     // [1, 2, 3]
+console.log(sliced);  // [1, 2]
+
+// start만 전달하고 end를 전달하지 않으면
+// start부터 배열 끝까지 잘라낸 새 배열 반환
+const sliced1 = arr.slice(2);
+
+console.log(sliced1); // [3]
+
+// 음숫값을 인덱스로 전달시
+// 배열 맨 끝부터 전달한 음수의 절댓값만큼 잘라낸 새 배열 반환
+const arr1 = [1, 2, 3, 4, 5];
+
+console.log(arr1.slice(-1));  // [5]
+console.log(arr1.slice(-2));  // [4, 5]
+console.log(arr1.slice(-3));  // [3, 4, 5]
+console.log(arr1.slice(-4));  // [2, 3, 4, 5]
+console.log(arr1.slice(-5));  // [1, 2, 3, 4, 5]
+</script>

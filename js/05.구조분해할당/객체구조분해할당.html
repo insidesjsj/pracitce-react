@@ -1,0 +1,13 @@
+<script>
+// 객체를 구조 분해 할당할 때는 데이터 저장 순서가 아니라 key를 기준으로 한다.
+let person = {
+    name: "안성준",
+    age: 28,
+    address: "서울시"
+};
+
+// 변수 name, age, address에는 person 객체 프로퍼티의 value가 key를 기준으로 각가 할당
+let { name, age, address} = person;
+
+console.log(name, age, address);    // 안성준 28 서울시
+</script>

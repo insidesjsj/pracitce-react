@@ -1,0 +1,28 @@
+<script>
+let varA;
+
+if (varA) {
+    console.log('값이 있음');
+} else {
+    console.log('값이 없음');   // varA는 선언만 하고 값을 할당하지 않아서 undefined
+}
+
+
+// 숫자 자료형에서는 0, -0, NaN을 제외한 모든 값이 truthy
+const num = -0;
+
+if(num) {
+    console.log("양수이거나 음수입니다.");
+} else {
+    console.log("0이거나 -0이거나 NaN입니다.");
+}
+
+// 빈 문자열을 제외한 모든 문자열은 truthy
+const str = "";
+if(str) {
+    console.log("공백 아님");
+} else {
+    console.log("공백임");
+}
+
+</script>

@@ -1,0 +1,37 @@
+<script>
+// 자바스크립트는 불리언 자료형의 참이나 거짓이 아닌 값도 상황에 따라 참, 거짓으로 평가하는 특징이 있음
+// undefined, null, 0n, 0, -0, NaN, ""
+// 모두 조건식에서 거짓(false)으로 평가되는 falsy한 값
+// 이 값 앞에 ! 연산자를 붙이면 참이 되어 if문 수행
+
+if(!undefined){
+    console.log("undefined 는 falsy한 값입니다.");
+}
+if(!null){
+    console.log("null 는 falsy한 값입니다.");
+}
+if(!0n){
+    console.log("0n 는 falsy한 값입니다.");
+}
+if(!0){
+    console.log("0 는 falsy한 값입니다.");
+}
+if(!-0){
+    console.log("-0 는 falsy한 값입니다.");
+}
+if(!NaN){
+    console.log("NaN 는 falsy한 값입니다.");
+}
+if(!""){
+    console.log('"" 는 falsy한 값입니다.');
+}
+
+const num = "false";
+
+if(num){
+    console.log("true");
+} else {
+    console.log("false");
+}
+
+</script>

@@ -1,0 +1,32 @@
+<script>
+setTimeout(function () {
+  console.log("1번!");
+}, 3000);
+
+console.log("2번!");
+// 2번!
+// 1번!
+
+// 화살표 함수
+setTimeout(() => {
+  console.log("1번");
+}, 3000);
+
+console.log("2번");
+// 2번
+// 1번
+
+function orderCoffee(coffee, time) {
+  setTimeout(() =>{
+    console.log(`${coffee} 제조 완료`)
+  }, time);
+}
+
+orderCoffee("달콤한 커피", 4000);
+orderCoffee("레몬티", 2000);
+orderCoffee("시원한 커피", 3000);
+// 레몬티 제조 완료
+// 시원한 커피 제조 완료
+// 달콤한 커피 제조 완료
+
+</script>

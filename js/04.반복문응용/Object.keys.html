@@ -1,0 +1,17 @@
+<script>
+// Object.keys
+// 객체 프로퍼티의 key를 배열로 반환
+
+let person = {
+  name: '안성준',
+  age: '28',
+  location: '서울시'
+};
+
+const keyArr = Object.keys(person);
+
+for(let key of keyArr) {
+  let value = person[key];
+  console.log(key, value);
+}
+</script>

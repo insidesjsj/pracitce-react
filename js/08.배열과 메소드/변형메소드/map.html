@@ -1,0 +1,21 @@
+<script>
+// map
+// 배열 각각의 요소에 대한 함수 호출 결과를 모아 새 배열을 만들어 반환하는 메소드
+// arr.map( callback(item, index, array) );
+
+let arr = [1, 2, 3, 4];
+let newArr = arr.map((item) => item * 3);
+
+console.log(newArr);  // [3, 6, 9, 12]
+
+let arr1 = [
+  { name: "안성준", hobby: "축구"},
+  { name: "이승훈", hobby: "농구"},
+  { name: "임성진", hobby: "배구"},
+  { name: "이윤수", hobby: "축구"}
+];
+
+let newArr1 = arr1.map((item) => item.name);
+
+console.log(newArr1); // ['안성준', '이승훈', '임성진', '이윤수']
+</script>

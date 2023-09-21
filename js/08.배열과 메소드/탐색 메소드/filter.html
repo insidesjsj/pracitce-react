@@ -1,0 +1,20 @@
+<script>
+// filter
+// 배열에서 조건을 만족하는 요소만 모아 새로운 배열로 반환
+// arr.filter( callback(item, index, array) );
+
+// 다음 객체 배열에서 취미가 '축구'인 사람을 모두 찾아 새로운 배열을 반환
+
+let arr = [
+  { name: "안성준", hobby: "축구"},
+  { name: "이승훈", hobby: "농구"},
+  { name: "임성진", hobby: "배구"},
+  { name: "이윤수", hobby: "축구"}
+]
+
+let filteredArr = arr.filter(
+    (item) => item.hobby === "축구"
+);
+
+console.log(filteredArr);
+</script>

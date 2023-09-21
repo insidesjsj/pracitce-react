@@ -1,0 +1,17 @@
+<script>
+// concat
+// 서로 다른 배열을 이어 붙여 새 배열을 반환
+
+let arrA = [1, 2];
+let arrB = [3, 4];
+let arrC = arrA.concat(arrB);
+
+console.log(arrC);  // [1, 2, 3, 4]
+console.log(arrA);  // [1, 2]
+
+let arrD = [1, 2];
+let arrE = { a: 1 , b: 2};
+let arrF = arrD.concat(arrE);
+
+console.log(arrF);  // [1, 2, { a: 1, b: 2 } ]
+</script>

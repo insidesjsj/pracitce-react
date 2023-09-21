@@ -1,0 +1,44 @@
+<script>
+function calcA() {
+  console.log("a");
+  return false;
+}
+
+function calcB() {
+  console.log("b");
+  return true;
+}
+console.log(calcA() && calcB());
+// a
+// false
+// 첫 번째 피연산자 함수 calcA의 반환값이 거짓이므로, 두 번째 피연산자는 계산 X
+
+
+// AND 단락 평가를 이용해 오류 방지
+function calcC() {
+  console.log("c");
+  return undefined;
+}
+function calcD() {
+  console.log("d");
+  return true;
+}
+console.log(calcC() && calcD());
+// c
+// undefined
+// AND 논리 연산의 결과가 true나 false가 아니라 undefined인 이유는
+// 논리 연산에 참여한 피연산자의 값이 불리언 값이 아니기 때문
+
+function getName(person) {
+        return person && person.name;
+}
+let person = {name : "안성준"};
+let name1 = getName(undefined);
+let name2 = getName(null);
+let name3 = getName(person);
+
+console.log(name1); // undefined
+console.log(name2); // null
+console.log(name3); // 안성준
+
+</script>

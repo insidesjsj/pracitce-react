@@ -1,0 +1,16 @@
+<script>
+// for...in
+// 배열은 for...in 객체는 for...in문 사용
+// for문, Object.keys 보다 더 간결한 코드 사용 간으
+
+let person = {
+  name: '안성준',
+  age: 28,
+  location: '서울시'
+};
+
+for(let key in person) {
+  const value = person[key];
+  console.log(key, value);
+}
+</script>
