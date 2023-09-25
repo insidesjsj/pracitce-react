@@ -1,8 +1,8 @@
-function Body(props) {
-    console.log(props); // {name: '안성준'}
+function Body({name, location}) {
+    console.log(name, location);
     return (
         <div className="body">
-        {props.name}은 {props.location}에 거주합니다.
+        {name}은 {location}에 거주합니다.
         </div>
     );
 }
