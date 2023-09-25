@@ -1,15 +1,14 @@
 import { useState } from "react";
 
 function Body() {
-    console.log("Update!");
-    const [count, setCount] = useState(0);  // 인수로 초깃값을 전달.
-    const onIncrease = () => {
-        setCount(count + 1);
+    const [text, setText] = useState("");   // 빈 문자열을 초깃값으로 하는 State 변수 text를 생성
+    const handleOnChange = (e) => {
+        setText(e.target.value);
     }
     return (
         <div className="body">
-            <h2>{count}</h2>
-            <button onClick={onIncrease}>+</button>
+            <input value={text} onChange={handleOnChange} />    {/* <input>태그의 value 속성에 State 변수 text 설정 */}
+            <div>{text}</div>   {/* 변수 text 값 페이지에 렌더링 */}
         </div>
     );
 }
