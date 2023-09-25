@@ -1,29 +1,26 @@
-import { useState } from "react";
+import {useRef, useState} from "react";
 
-// 리액트에서 부모 컴포넌트가 리렌더 되면 자식도 함께 리렌더 된다.
-// 의미 없는 리렌더가 자주 발생하면 웹 브라우저의 성능은 떨어진다.
-// 컴포넌트의 부모-자식 관계에서 State를 사용할 때는 늘 주의가 필요하다.
-function Viewer() {
-    console.log("viewer component update!");
-    return <div>Viewer</div>;
-}
 function Body() {
-    const [number, setNumber] = useState(0);
-    const onIncrease = () => {
-        setNumber(number +1);
+    const [text, setText] = useState("");
+    const textRef = useRef();
+
+    const handleOnChange = (e) => {
+        setText(e.target.value);
     };
-    const onDecrease = () => {
-        setNumber(number -1);
+    const handleOnClick = () => {
+        if(text.length < 5) {
+            textRef.current.focus();    // 다섯 글자보다 적다면 textRef.current가 참조하는 입력 폼에 포커스 실행
+        } else {
+            alert(text);
+            setText("");
+            // textRef.current.value = "";
+        }
     };
 
     return (
         <div>
-            <h2>{number}</h2>
-            <Viewer />
-            <div>
-                <button onClick={onDecrease}>-</button>
-                <button onClick={onIncrease}>+</button>
-            </div>
+            <input ref={textRef} value={text} onChange={handleOnChange} />
+            <button onClick={handleOnClick}>작성 완료</button>
         </div>
     );
 }
