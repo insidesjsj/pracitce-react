@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 function Body() {
-    const [text, setText] = useState("");   // 빈 문자열을 초깃값으로 하는 State 변수 text를 생성
+    const [date, setDate] = useState("");
     const handleOnChange = (e) => {
-        setText(e.target.value);
-    }
+        console.log("변경된 값: ", e.target.value);
+        setDate(e.target.value);
+    };
+
     return (
         <div className="body">
-            <input value={text} onChange={handleOnChange} />    {/* <input>태그의 value 속성에 State 변수 text 설정 */}
-            <div>{text}</div>   {/* 변수 text 값 페이지에 렌더링 */}
+            <input type="date" value={date} onChange={handleOnChange} />
         </div>
     );
 }
