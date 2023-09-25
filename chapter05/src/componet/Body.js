@@ -1,7 +1,11 @@
 import { useState } from "react";
 
-function Viewer({ number }) {   // Viewer 컴포넌트에는 Props로 Body 컴포넌트에 있는 State 변수 number가 전달됨
-    return <div>{number % 2 === 0 ? <h3>짝수</h3> : <h3>홀수</h3>}</div>;
+// 리액트에서 부모 컴포넌트가 리렌더 되면 자식도 함께 리렌더 된다.
+// 의미 없는 리렌더가 자주 발생하면 웹 브라우저의 성능은 떨어진다.
+// 컴포넌트의 부모-자식 관계에서 State를 사용할 때는 늘 주의가 필요하다.
+function Viewer() {
+    console.log("viewer component update!");
+    return <div>Viewer</div>;
 }
 function Body() {
     const [number, setNumber] = useState(0);
@@ -15,8 +19,7 @@ function Body() {
     return (
         <div>
             <h2>{number}</h2>
-            <Viewer number={number} />
-
+            <Viewer />
             <div>
                 <button onClick={onDecrease}>-</button>
                 <button onClick={onIncrease}>+</button>
