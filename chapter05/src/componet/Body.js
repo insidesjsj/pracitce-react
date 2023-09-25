@@ -1,26 +1,21 @@
 function Body() {
-    const numA = 1;
-    const numB = 2;
+    const numA = 19;
+    const numB = 200;
 
-    const strA = '안녕';
-    const strB = '리액트';
+    /* 조건문을 이용한 조건부 렌더링 */
+    if (numB % 2 === 0 ){
+        return <div>{numB}은(는) 짝수입니다.</div>;
+    } else {
+        return <div>{numB}은(는) 홀수입니다.</div>
+    }
 
-    const boolA = true;
-    const boolB = false;
-
-    const objA = {
-        a: 1,
-        b: 2
-    };
     return (
-        <div>
-            <h1>body</h1>
-            <h2>{numA + numB}</h2>                    {/*숫자 표현식*/}
-            <h2>{strA + strB}</h2>                    {/*문자 표현식*/}
-            <h2>{String(boolA + boolB)}</h2>    {/*논리 표현식*/}
-            <h2>{objA.a}</h2>                         {/*프로퍼티 접근 표기법*/}
-            <h2>{objA.b}</h2>
-        </div>
+        /* 삼항 연산자를 활용한 조건부 렌더링 */
+        <>
+            <h2>
+                {numA}은(는) {numA % 2 === 0 ? "짝수" : "홀수"}입니다.
+            </h2>
+        </>
     );
 }
 export default Body;
