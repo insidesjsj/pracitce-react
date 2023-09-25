@@ -1,15 +1,19 @@
 import { useState } from "react";
 
 function Body() {
-    const [date, setDate] = useState("");
+    const [option, setOption] = useState("");
     const handleOnChange = (e) => {
         console.log("변경된 값: ", e.target.value);
-        setDate(e.target.value);
+        setOption(e.target.value);
     };
 
     return (
         <div className="body">
-            <input type="date" value={date} onChange={handleOnChange} />
+            <select value={option} onChange={handleOnChange}>
+                <option key={"1번"}>1번</option>
+                <option key={"2번"}>2번</option>
+                <option key={"3번"}>3번</option>
+            </select>
         </div>
     );
 }
