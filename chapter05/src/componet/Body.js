@@ -1,10 +1,16 @@
 function Body() {
-    function handleOnClick() {
-        alert("버튼을 클릭하셨군요");
+    function handleOnClick(e) {
+        console.log(e);
+        console.log(e.target.name);
     }
     return (
         <div className="body">
-            <button onClick={handleOnClick}>클릭하세요</button>
+            <button name="A버튼" onClick={handleOnClick}>
+                A버튼
+            </button>
+            <button name="B버튼" onClick={handleOnClick}>
+                B버튼
+            </button>
         </div>
     );
 }
