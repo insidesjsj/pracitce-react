@@ -4,12 +4,15 @@ import Body from "./componet/Body";
 import Footer from "./componet/Footer";
 
 function App() {
-    const name = "안성준";
+    const  BodyProps = {
+        name: "안성준",
+        location: "구로구"
+    };
 
   return (
       <div className="App">
           <Header />
-          <Body name={name} location={"부천시"} />
+          <Body {...BodyProps} />
           <Footer />
       </div>
   );
