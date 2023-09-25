@@ -9,7 +9,7 @@ function App() {
   return (
       <div className="App">
           <Header />
-          <Body name={name} />
+          <Body name={name} location={"부천시"} />
           <Footer />
       </div>
   );
