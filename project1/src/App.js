@@ -24,6 +24,10 @@ function App() {
         }
     });
 
+    useEffect(() => {
+        console.log("컴포넌트 마운트");
+    }, []); // 의존성 배열에 빈 배열 전달시 컴포넌트의 마운트 시점에만 콜백함수 실행.
+
     return (
         <div className="App">
             <h1>Simple Counter</h1>
