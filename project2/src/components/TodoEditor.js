@@ -16,6 +16,12 @@ const TodoEditor = ({ onCreate }) => {  // props 객체를 구조분해할당
         setContent("");
     };
 
+    const onKeyDown = (e) => {
+        if (e.keyCode === 13) {
+            onSubmit();
+        }
+    };
+
     return (
         <div className="TodoEditor">
             <h4>새로운 Todo 작성하기 ✏️</h4>
@@ -24,6 +30,7 @@ const TodoEditor = ({ onCreate }) => {  // props 객체를 구조분해할당
                     ref={inputRef}
                     value={content}
                     onChange={onChangeContent}
+                    onKeyDown={onKeyDown}
                     placeholder="새로운 Todo..."
                 />
                 <button onClick={onSubmit}>추가</button>
