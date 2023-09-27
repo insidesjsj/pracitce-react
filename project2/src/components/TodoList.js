@@ -2,7 +2,7 @@ import "./TodoList.css";
 import TodoItem from "./TodoItem";
 import {useState} from "react";
 
-function TodoList({ todo }) {   // Props 구조 분해 할당
+function TodoList({ todo, onUpdate }) {   // Props 구조 분해 할당
     const [search, setSearch] = useState("");
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
@@ -24,7 +24,7 @@ function TodoList({ todo }) {   // Props 구조 분해 할당
             />
             <div className="list_wrapper">
                 {getSearchResult().map((it) => ( // map 메서드를 이용해 배열 todo의 모든 요소를 순차적으로 순회하며 HTML로 변환
-                    <TodoItem key={it.id} {...it} />
+                    <TodoItem key={it.id} {...it} onUpdate={onUpdate} /> // TodoItem 컴포넌트에 onUpdate를 Props로 전달 
                 ))}
             </div>
         </div>

@@ -38,11 +38,20 @@ function App() {
         setTodo([newItem,...todo]); // 배열의 스프레드 연산자를 활용해 newItem을 포함한 새 배열을 만들어 State 변수 todo를 업데이트. 이렇게 작성하면 새롭게 추가된 아이템은 배열의 0번 요소
         idRef.current += 1;
     };
+
+    // TodoItem 체크박스에 틱이 발생했을 때 호출하는 함수
+    const onUpdate = (targetId) => {    // 매개변수 targetId로 틱이 발생한 할 일 아이템의 id를 저장
+        setTodo(    // todo 값을 업데이트. map 메서드를 이용해 배열 todo에서 id가 targetId와 일치하는 요소를 찾으면, isDone 프로퍼티 값을 토글한 새 배열을 만들어 인수로 전달
+            todo.map((it) =>
+                it.id === targetId ? {...it, isDone: !it.isDone} : it
+            )
+        );
+    };
   return (
     <div className="App">
         <Header />
         <TodoEditor onCreate={onCreate} />
-        <TodoList todo={todo} />
+        <TodoList todo={todo} onUpdate={onUpdate} />
     </div>
   );
 }
