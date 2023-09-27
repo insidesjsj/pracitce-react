@@ -10,7 +10,7 @@ function TodoList({ todo }) {   // Props 구조 분해 할당
     const getSearchResult = () => {
       return search === ""
       ? todo
-      : todo.filter((it) => it.content.includes(search));
+      : todo.filter((it) => it.content.toLowerCase().includes(search));
     };
 
     return (
