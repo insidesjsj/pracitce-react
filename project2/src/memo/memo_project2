@@ -10,3 +10,10 @@ Update 기능 흐름
 3. onUpdate는 틱이 발생한 아이템의 상태를 토글하기 위해 State 값을 업데이트
 4. App 컴포넌트의 State 값이 변경되면 TodoList에 전달하는 Props의 값 또한 변경
 5. TodoList는 변경된 State 값을 다시 리스트로 렌더링.
+
+Delete 기능 흐름
+1. 삭제하려는 할 일 아이템에서 <삭제> 버튼 클릭
+2. 할 일을 삭제하는 함수 onDelete 호출.
+3. <삭제> 버튼을 클릭하면 삭제할 할 일 아이템만 빼고, 새 배열을 만들어 State 값을 업데이트
+4. State 변수 todo가 업데이트 되면, App가 TodoLsit 컴포넌트에 전달한 Props의 값도 변경
+5. TodoList 컴포넌트는 Props의 값이 변경되면 리렌더. 이 때 새로운 배열 todo로 할 일 리스트를 다시 렌더링
