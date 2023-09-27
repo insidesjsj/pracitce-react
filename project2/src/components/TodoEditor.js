@@ -13,6 +13,7 @@ const TodoEditor = ({ onCreate }) => {  // props 객체를 구조분해할당
             return;
         }
         onCreate(content);
+        setContent("");
     };
 
     return (
