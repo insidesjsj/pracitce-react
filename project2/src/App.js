@@ -33,7 +33,7 @@ function App() {
             id: idRef.current,
             content,
             isDone: false,
-            createdDate: new Date().getDate()
+            createdDate: new Date().getTime(),
         };
         setTodo([newItem,...todo]); // 배열의 스프레드 연산자를 활용해 newItem을 포함한 새 배열을 만들어 State 변수 todo를 업데이트. 이렇게 작성하면 새롭게 추가된 아이템은 배열의 0번 요소
         idRef.current += 1;

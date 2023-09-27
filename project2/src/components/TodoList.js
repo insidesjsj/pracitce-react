@@ -8,11 +8,8 @@ function TodoList({ todo }) {   // Props 구조 분해 할당
             <input className="searchbar" placeholder="검색어를 입력하세요"/>
             <div className="list_wrapper">
                 {todo.map((it) => ( // map 메서드를 이용해 배열 todo의 모든 요소를 순차적으로 순회하며 HTML로 변환
-                    <div>{it.content}</div>
+                    <TodoItem {...it} />
                 ))}
-                <TodoItem />
-                <TodoItem />
-                <TodoItem />
             </div>
         </div>
     );
