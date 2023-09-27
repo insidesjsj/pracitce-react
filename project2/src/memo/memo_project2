@@ -3,3 +3,10 @@
 
 Warning: Each child in a list should have a unique "key" prop.
 : "리스트의 모든 자식 요소는 key라는 고유한 prop을 반드시 가져야 한다."
+
+Update 기능 흐름
+1. 사용자가 TodoItem의 체크박스에 틱(체크 표시)
+2. 함수 onUpdate를 App => TodoItem 전달.TodoItem 컴포넌트는 함수 onUpdate 호출 => 어떤 체크박스에 틱이 발생했느지 해당 아이템의 id를 인수로 전달
+3. onUpdate는 틱이 발생한 아이템의 상태를 토글하기 위해 State 값을 업데이트
+4. App 컴포넌트의 State 값이 변경되면 TodoList에 전달하는 Props의 값 또한 변경
+5. TodoList는 변경된 State 값을 다시 리스트로 렌더링.
