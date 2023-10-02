@@ -30,6 +30,16 @@ function reducer(state, action) {
         case "CREATE": {
             return [action.newItem, ...state];
         }
+        case "UPDATE": {
+            return state.map((it) =>
+                it.id === action.targetId
+                ? {
+                    ...it,
+                    isDone: !it.isDone,
+                    }
+                : it
+            );
+        }
         default:
             return state;
     }
@@ -54,7 +64,10 @@ function App() {
 
     // TodoItem 체크박스에 틱이 발생했을 때 호출하는 함수
     const onUpdate = (targetId) => {    // 매개변수 targetId로 틱이 발생한 할 일 아이템의 id를 저장
-        // setTodo 모두 삭제
+        dispatch({
+            type: "UPDATE",
+            targetId,
+        });
     };
 
     const onDelete = (targetId) => {
