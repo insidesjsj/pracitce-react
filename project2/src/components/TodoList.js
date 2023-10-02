@@ -13,9 +13,26 @@ function TodoList({ todo, onUpdate, onDelete }) {   // Props 구조 분해 할�
       : todo.filter((it) => it.content.toLowerCase().includes(search));
     };
 
+    const analyzeTodo = () => {
+        const totalCount = todo.length;                             // todo의 아이템 총 개수
+        const doneCount = todo.filter((it) => it.isDone).length;    // 완료 아이템 개수
+        const notDoneCount = totalCount - doneCount;        // 미완료 아이템 개수
+        return {
+            totalCount,
+            doneCount,
+            notDoneCount,
+        };
+    };
+    const { totalCount, doneCount, notDoneCount } = analyzeTodo();
+
     return (
         <div className="TodoList">
             <h4>Todo List</h4>
+            <div>
+                <div>총개수: {totalCount}</div>
+                <div>완료된 할 일: {doneCount}</div>
+                <div>아직 완료하지 못한 할 일: {notDoneCount}</div>
+            </div>
             <input
                 value={search}
                 onChange={onChangeSearch}
