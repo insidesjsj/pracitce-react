@@ -26,7 +26,13 @@ const mockTodo = [
 ];
 
 function reducer(state, action) {
-    return state;
+    switch (action.type){
+        case "CREATE": {
+            return [action.newItem, ...state];
+        }
+        default:
+            return state;
+    }
 }
 
 function App() {
@@ -34,7 +40,15 @@ function App() {
     const [todo, dispatch] = useReducer(reducer, mockTodo); // 기존 useState를 삭제하고 useReducer로 대체
 
     const onCreate = (content) => { // TodoEditor 컴포넌트에서 <추가>버튼을 클릭하며 호출할 함수 onCreate. TodoEditor 컴포넌트에서 사용자가 작성한 할 일 데이터를 받아 매개변수 content에 저장
-        // setTodo 모두 삭제
+        dispatch({
+            type: "CREATE",
+            newItem: {
+                id: idRef.current,
+                content,
+                isDone: false,
+                createdDate: new Date().getTime(),
+            },
+        });
         idRef.current += 1;
     };
 
