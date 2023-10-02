@@ -47,3 +47,26 @@ const CompA = React.memo(() => {
     console.log("컴포넌트가 호출되었습니다.");
     return <div>CompA</div>;
 });
+
+useCallback
+: 컴포넌트가 리렌더 될 때 내부에 작성된 함수를 다시 생성하지 않도록 메모이제이션하는 리액트 훅
+
+기본 사용법)
+const memoizedFunc = useCallback(func,deps)
+deps(의존성 배열)에 담긴 값이 바뀌면 첫 번째 인수로 전달한 콜백 함수를 다시 만들어 반환
+첫 번째 인수로 전달한 콜백 함수를 어떤 경우에도 다시 생성되지 않게 하려면 의존성 배열을 빈 배열로 전달
+
+유의사항)
+const onCreate = useCallback(() => {
+    setState([newItem, ...state]);
+},[])
+
+1. useCallback의 첫 번째 인수로 전달한 콜백 함수에서 State 변수에 접근하는 경우 문제가 발생할 수 있다.
+2. useCallback으로 전달한 의존성 배열이 빈 배열이므로, 함수 onCreate는 처음 생성된 후에는 컴포넌트가 리렌더 되어도 다시 생성되지 않는다.
+3. 이 경우 useCallback에서 전달한 콜백 함수에서 State 변수에 접근하면 컴포넌트를 마운트할 때의 값(State의 초깃값)이 반한됨.
+4. 이유는 콜백 함수가 컴포넌트의 마운트 시점 이후에는 다시 생성되지 않기 때문
+
+이 때는 setState의 인수로 콜백 함수를 전달하는 리액트의 '함수형 업데이트' 기능을 이용
+const onCreate = useCallback(() => {
+    setState((state) => [newItem, ...state]);
+},[])

@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
-import {useReducer, useRef} from "react";
+import {useCallback, useReducer, useRef} from "react";
 
 const mockTodo = [
     {
@@ -66,19 +66,19 @@ function App() {
     };
 
     // TodoItem 체크박스에 틱이 발생했을 때 호출하는 함수
-    const onUpdate = (targetId) => {    // 매개변수 targetId로 틱이 발생한 할 일 아이템의 id를 저장
+    const onUpdate = useCallback((targetId) => {    // 매개변수 targetId로 틱이 발생한 할 일 아이템의 id를 저장
         dispatch({
             type: "UPDATE",
             targetId,
         });
-    };
+    },[]);
 
-    const onDelete = (targetId) => {
+    const onDelete = useCallback((targetId) => {
         dispatch({
             type: "DELETE",
             targetId,
         })
-    };
+    },[]);
 
   return (
     <div className="App">
