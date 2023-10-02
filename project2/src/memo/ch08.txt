@@ -15,3 +15,19 @@ const vlaue = useMemo(() => {
     return count * count;
 }, [count])
 
+
+고차 컴포넌트
+: 컴포넌트의 기능을 다시 사용허기 위한 리액트의 고급 기술
+- 인수로 전달된 텀포넌트를 어떤 기능을 추가해 새로운 컴포넌트로 반환하는 함수
+
+횡단 관심사(Cross-Cutting Concerns)
+: 비즈니스 로직과 구분되는 공통 기능을 지칭할 때 사용하는 용어
+
+const CompA = () => {
+    console.log("컴포넌트가 호출되었습니다.");  // 횡단 관심사
+    retunr <div>CompA</div>;
+}
+const CompB = () => {
+    console.log("컴포넌트가 호출되었습니다.");  // 횡단 관심사
+    retunr <div>CompB</div>;
+}
