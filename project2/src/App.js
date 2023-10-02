@@ -8,7 +8,7 @@ const mockTodo = [
     {
         id: 0,
         isDone: false,
-        content: "Recat 공부하기",
+        content: "React 공부하기",
         createdDate: new Date().getTime()
     },
     {

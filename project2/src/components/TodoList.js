@@ -1,6 +1,6 @@
 import "./TodoList.css";
 import TodoItem from "./TodoItem";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 
 function TodoList({ todo, onUpdate, onDelete }) {   // Props 구조 분해 할당
     const [search, setSearch] = useState("");
@@ -13,7 +13,7 @@ function TodoList({ todo, onUpdate, onDelete }) {   // Props 구조 분해 할�
       : todo.filter((it) => it.content.toLowerCase().includes(search));
     };
 
-    const analyzeTodo = () => {
+    const analyzeTodo = useMemo( () => {
         // 연산량을 줄이려면 함수 analyzeTodo를 불필요하게 호출하는 일이 일어나지 않아야 한다.
         // analyzeTodo를 호출 할 때마다 콘솔에 메시지를 출력
         // TodoList 컴포넌트를 처음 마운트할 때 1번, 검색 폼에서 react 다섯 글다즐 입력할 때마다 리렌더 되어 5번 출력
@@ -27,8 +27,8 @@ function TodoList({ todo, onUpdate, onDelete }) {   // Props 구조 분해 할�
             doneCount,
             notDoneCount,
         };
-    };
-    const { totalCount, doneCount, notDoneCount } = analyzeTodo();
+    },[todo]);
+    const { totalCount, doneCount, notDoneCount } = analyzeTodo;
 
     return (
         <div className="TodoList">
