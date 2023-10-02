@@ -40,6 +40,9 @@ function reducer(state, action) {
                 : it
             );
         }
+        case "DELETE": {
+            return state.filter((it) => it.id !== action.targetId);
+        }
         default:
             return state;
     }
@@ -71,7 +74,10 @@ function App() {
     };
 
     const onDelete = (targetId) => {
-        // setTodo 모두 삭제
+        dispatch({
+            type: "DELETE",
+            targetId,
+        })
     };
 
   return (
