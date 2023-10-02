@@ -25,9 +25,25 @@ const vlaue = useMemo(() => {
 
 const CompA = () => {
     console.log("컴포넌트가 호출되었습니다.");  // 횡단 관심사
-    retunr <div>CompA</div>;
+    return <div>CompA</div>;
 }
 const CompB = () => {
     console.log("컴포넌트가 호출되었습니다.");  // 횡단 관심사
-    retunr <div>CompB</div>;
+    return <div>CompB</div>;
 }
+
+React.memo
+- 컴포넌트가 모든 상황에서 리렌더되지 않도록 강화함으로써 서비스를 최적화하는 도구
+
+기본사용법
+- 인수로 전달한 컴포넌트를 메오이제이션된 컴포넌트로 만들어 반환
+- 강화하고 싶은 컴포넌트를 React.memo로 감싸면 된다.
+
+const memoizedComp = React.memo(Comp);
+(Comp: 메모이제이션하려는 컴포넌트)
+
+선언과 동시에 메모이제이션 가능
+const CompA = React.memo(() => {
+    console.log("컴포넌트가 호출되었습니다.");
+    return <div>CompA</div>;
+});
