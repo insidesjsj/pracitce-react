@@ -14,6 +14,11 @@ function TodoList({ todo, onUpdate, onDelete }) {   // Props 구조 분해 할�
     };
 
     const analyzeTodo = () => {
+        // 연산량을 줄이려면 함수 analyzeTodo를 불필요하게 호출하는 일이 일어나지 않아야 한다.
+        // analyzeTodo를 호출 할 때마다 콘솔에 메시지를 출력
+        // TodoList 컴포넌트를 처음 마운트할 때 1번, 검색 폼에서 react 다섯 글다즐 입력할 때마다 리렌더 되어 5번 출력
+        console.log("analyzeTodo 함수 호출");  
+        
         const totalCount = todo.length;                             // todo의 아이템 총 개수
         const doneCount = todo.filter((it) => it.isDone).length;    // 완료 아이템 개수
         const notDoneCount = totalCount - doneCount;        // 미완료 아이템 개수
