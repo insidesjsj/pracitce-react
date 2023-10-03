@@ -49,7 +49,7 @@ function reducer(state, action) {
     }
 }
 
-const TodoContext = React.createContext();  // createContext를 호출해 TodoContext를 생성. 반드시 컴포넌트 밖에서 생성해야한다(why? 안에서 생성시 컴포넌트가 리렌더 될 때마다 Context를 새롭게 생성)
+export const TodoContext = React.createContext();  // createContext를 호출해 TodoContext를 생성. 반드시 컴포넌트 밖에서 생성해야한다(why? 안에서 생성시 컴포넌트가 리렌더 될 때마다 Context를 새롭게 생성)
 
 
 function App() {
