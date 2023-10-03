@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
 import {useCallback, useReducer, useRef} from "react";
+import React from "react";
 
 const mockTodo = [
     {
@@ -48,6 +49,9 @@ function reducer(state, action) {
     }
 }
 
+const TodoContext = React.createContext();  // createContext를 호출해 TodoContext를 생성. 반드시 컴포넌트 밖에서 생성해야한다(why? 안에서 생성시 컴포넌트가 리렌더 될 때마다 Context를 새롭게 생성)
+
+
 function App() {
     const idRef = useRef(3);
     const [todo, dispatch] = useReducer(reducer, mockTodo); // 기존 useState를 삭제하고 useReducer로 대체
@@ -84,8 +88,10 @@ function App() {
     <div className="App">
         {/*<TestComp />*/}
         <Header />
-        <TodoEditor onCreate={onCreate} />
-        <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
+        <TodoContext.Provider value={{ todo, onCreate, onUpdate, onDelete }}>    {/*TodoContext.Provider 컴포넌트에 값을 전달하기 위해 Props를 객체로 설정.*/}
+            <TodoEditor />   {/*기존 Props 삭제*/}
+            <TodoList />     {/*기존 Props 삭제*/}
+        </TodoContext.Provider>
     </div>
   );
 }

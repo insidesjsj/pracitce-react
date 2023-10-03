@@ -57,4 +57,11 @@ function TodoList({ todo, onUpdate, onDelete }) {   // Props 구조 분해 할�
         </div>
     );
 }
+// Uncaught TypeError: Cannot read properties of undefined (reading 'length') 에러 발생
+// "TodoList 컴포넌트에서 객체가 아닌 undefined 값에 length 프로퍼티로 접근하기 때문에 오류가 발생"
+// App => todoList에 전달하는 Props를 모두 제거했기 때문에 todo 값이 undefinde
+//  todo의 기본값을 빈 배열로 하는 defaultProps 설정 
+TodoList.defaultProps = {
+    todo: [],
+};
 export default TodoList;
