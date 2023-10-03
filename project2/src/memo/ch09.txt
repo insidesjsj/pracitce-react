@@ -52,3 +52,15 @@ function Main () {
     const data = useContext(MyContext);
 }
 
+어떻게 Context를 적용할지?
+문제점)
+- App에서 전달하는 Props 중 onDelete와 onUpdate는 TodoList에서는 사용하지 않고 TodoItem에서 ㅏ사용
+- 리액트 구조상 TodoItem이 이 Props를 사용하려면 반드시 TodoList를 거쳐서 전달해야 함
+- 여기서 Props Drilling 묹네가 발생
+
+해결방안)
+- TodoContext라는 이름의 Context를 만들고, App 컴포넌트 하위에 데이트럴 공급하는 TodoContext.Provider를 배치
+- TodoEditor, TodoList, TodoItem 컴포넌트를 해당 Provider 아래에 배치
+- App => Todocontext.Provider : [todop, onCreate, onUpdate, onDelete]
+- TodoItem은 TodoContext에서 함수 onDelete와 onUpdate를 직접 제공받는다.
+
