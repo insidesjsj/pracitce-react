@@ -5,10 +5,6 @@ import { TodoContext } from "../App";
 
 const TodoList = () => {   // TodoList 컴포넌트는 더 이상 App에서 어떤 Props도 받지 않는다. 따라서 Props를 매개변수로 구조 분해 할당하는 기존 코드 제거
     const { todo } = useContext(TodoContext);   // TodoList는 더 이상 onUpdate와 onDelete를 사용하지 않기에 todo만 구조분해 할당 해주면 된다.
-    
-    const storeData = useContext(TodoContext);  // useContext를 호출하고 TodoContext를 인수로 전달해 이 Context가 공급하는 데이터를 storeData에 저장
-    console.log(storeData);
-
     const [search, setSearch] = useState("");
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
