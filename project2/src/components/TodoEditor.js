@@ -1,6 +1,8 @@
 import "./TodoEditor.css";
-import {useRef, useState} from "react";
-const TodoEditor = ({ onCreate }) => {  // props 객체를 구조분해할당
+import {useContext, useRef, useState} from "react";
+import {TodoContext} from "../App";
+const TodoEditor = () => {  // props 객체를 구조분해할당
+    const { onCreate } = useContext(TodoContext);
     const [content, setContent] = useState();
     const inputRef = useRef();  // 할 일 입력폼을 제어할 객체
 
