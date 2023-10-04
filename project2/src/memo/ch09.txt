@@ -54,13 +54,31 @@ function Main () {
 
 어떻게 Context를 적용할지?
 문제점)
-- App에서 전달하는 Props 중 onDelete와 onUpdate는 TodoList에서는 사용하지 않고 TodoItem에서 ㅏ사용
+- App에서 전달하는 Props 중 onDelete와 onUpdate는 TodoList에서는 사용하지 않고 TodoItem에서 사용
 - 리액트 구조상 TodoItem이 이 Props를 사용하려면 반드시 TodoList를 거쳐서 전달해야 함
-- 여기서 Props Drilling 묹네가 발생
+- 여기서 Props Drilling 문제가 발생
 
 해결방안)
-- TodoContext라는 이름의 Context를 만들고, App 컴포넌트 하위에 데이트럴 공급하는 TodoContext.Provider를 배치
+- TodoContext라는 이름의 Context를 만들고, App 컴포넌트 하위에 데이터를 공급하는 TodoContext.Provider를 배치
 - TodoEditor, TodoList, TodoItem 컴포넌트를 해당 Provider 아래에 배치
-- App => Todocontext.Provider : [todop, onCreate, onUpdate, onDelete]
+- App => Todocontext.Provider : [todo, onCreate, onUpdate, onDelete]
 - TodoItem은 TodoContext에서 함수 onDelete와 onUpdate를 직접 제공받는다.
+
+리팩토링이 잘 되었는지 확인하기1
+: 리팩토링은 사용자에게 제공하는 기능은 유지한채로 내부 구조만 변경해서 개선하는 일이다. 따라서 리팩토링 이후 기능이 제대로 동작하지 않는다면 리팩토링이 잘 됐다고 할 수 없다.
+
+문제점)
+- 할 일 아이템을 생성한 후 콘솔을 확인 하면 모든 TodoItem 컴포넌트가 리렌더 되는 것을 알 수 있다.
+- 이는 React.memo가 리팩토링 이후 정삭적으로 동작하지 않았다는 것을 의미
+
+문제의 원인)
+- Context의 Provider 또한 리액트 컴포넌트 이므로 Props로 전달되는 value의 값이 바뀌면 리렌더 된다.
+1) 할 일 아이템 추가시 App 컴포넌트의 todo가 업데이트 => App 컴포넌트 리렌더
+2) 이와 동시에 TodoContext.Provider에 전달되는 Props도 업데이트 된다.
+3) TodoItem 역시 사용자가 할 일 아이템을 추가하면 TodoContext.Provider에서 onUpdate와 onDelete를 받고 있으므로 리렌더 된다.
+
+구조 재설계)
+1) Context를 역할에 따라 분리
+TodoStateContex : todo갖 업데이트 되면 영향받는 컴포넌트를 위한 Context
+TodoDispatchContext : dispatch 함수 onCreate, onUpdate, onDelete가 변경되면 영향을 받는 컴포넌트를 위한 Context
 
