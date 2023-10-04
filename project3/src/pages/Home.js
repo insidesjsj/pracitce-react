@@ -1,4 +1,5 @@
 import {useSearchParams} from "react-router-dom";
+import Button from "../component/Button";
 
 const Home = () => {
   // 쿼리스트링으로 값 불러오기
@@ -7,7 +8,14 @@ const Home = () => {
   console.log(searchParams.get("sort"));  // http://localhost:3000/?sort=latest로 접속시 콘솔에 latest 출력
 
   return (
-      <div>Home 페이지 입니다.</div>
+      <div>
+        <Button
+            text={"버튼 텍스트"}
+            onClick={() => {
+                alert("hi");
+            }}
+        />
+      </div>
   );
 };
 
