@@ -1,0 +1,4 @@
+리액트 라우터 설치
+명령어) npm i react-router-dom
+버전확인) package.json => "react-router-dom": "^6.16.0"
+
