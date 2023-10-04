@@ -79,6 +79,6 @@ function Main () {
 
 구조 재설계)
 1) Context를 역할에 따라 분리
-TodoStateContex : todo갖 업데이트 되면 영향받는 컴포넌트를 위한 Context
+TodoStateContex : todo가 업데이트 되면 영향받는 컴포넌트를 위한 Context
 TodoDispatchContext : dispatch 함수 onCreate, onUpdate, onDelete가 변경되면 영향을 받는 컴포넌트를 위한 Context
 

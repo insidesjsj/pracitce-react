@@ -1,10 +1,10 @@
 import "./TodoList.css";
 import TodoItem from "./TodoItem";
 import {useContext, useMemo, useState} from "react";
-import { TodoContext } from "../App";
+import {TodoStateContext} from "../App";
 
 const TodoList = () => {   // TodoList 컴포넌트는 더 이상 App에서 어떤 Props도 받지 않는다. 따라서 Props를 매개변수로 구조 분해 할당하는 기존 코드 제거
-    const { todo } = useContext(TodoContext);   // TodoList는 더 이상 onUpdate와 onDelete를 사용하지 않기에 todo만 구조분해 할당 해주면 된다.
+    const todo = useContext(TodoStateContext);   // App 컴포넌트에는 TodoStateContext.Provider에서 객체데이터가 아닌 todo 배열 그 자체를 전달해주기 때문에 구조 분해 할당으로 todo를 꺼내면 오륲가 발생하므로 수정
     const [search, setSearch] = useState("");
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
@@ -56,7 +56,7 @@ const TodoList = () => {   // TodoList 컴포넌트는 더 이상 App에서 어�
 }
 // Uncaught TypeError: Cannot read properties of undefined (reading 'length') 에러 발생
 // "TodoList 컴포넌트에서 객체가 아닌 undefined 값에 length 프로퍼티로 접근하기 때문에 오류가 발생"
-// App => todoList에 전달하는 Props를 모두 제거했기 때문에 todo 값이 undefinde
+// App => todoList에 전달하는 Props를 모두 제거했기 때문에 todo 값이 undefined
 //  todo의 기본값을 빈 배열로 하는 defaultProps 설정
 TodoList.defaultProps = {
     todo: [],

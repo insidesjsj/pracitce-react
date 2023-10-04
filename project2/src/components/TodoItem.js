@@ -1,9 +1,9 @@
 import "./TodoItem.css";
 import React, {useContext} from "react";
-import {TodoContext} from "../App";
+import {TodoDisPatchContext} from "../App";
 
 const TodoItem = ({ id, content, isDone, createdDate }) => { // onUpdate 와 onDelete 를 더 이상 구조 분해 할당 하지 않는다.
-    const { onUpdate, onDelete } = useContext(TodoContext);
+    const { onUpdate, onDelete } = useContext(TodoDisPatchContext);
 
     // TodoItem 컴포넌트는 사용자가 등록할 할 일 아이템의 개수만큼 렌더링
     // 할 일 아이템이 수 백개가 넘어갈 경우 불필요한 렌더링 발생시 문제가 생김
