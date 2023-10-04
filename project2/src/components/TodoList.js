@@ -3,11 +3,12 @@ import TodoItem from "./TodoItem";
 import {useContext, useMemo, useState} from "react";
 import { TodoContext } from "../App";
 
-const TodoList = () => {   // TodoList 컴포넌트는 더 이상 App에서 어떤 Props도 받지 ㅇ않는다. 따라서 Props를 매개변수로 구조 분해 할당하는  기존 코드 제거
-    const { todo, onUpdate, onDelete } = useContext(TodoContext);   // TodoContext에서 공급 받은 값을 구조 분해 할당. 이 값들이 기존 TodoList의 Props를 대체
+const TodoList = () => {   // TodoList 컴포넌트는 더 이상 App에서 어떤 Props도 받지 않는다. 따라서 Props를 매개변수로 구조 분해 할당하는 기존 코드 제거
+    const { todo } = useContext(TodoContext);   // TodoList는 더 이상 onUpdate와 onDelete를 사용하지 않기에 todo만 구조분해 할당 해주면 된다.
     
     const storeData = useContext(TodoContext);  // useContext를 호출하고 TodoContext를 인수로 전달해 이 Context가 공급하는 데이터를 storeData에 저장
     console.log(storeData);
+
     const [search, setSearch] = useState("");
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
@@ -51,12 +52,7 @@ const TodoList = () => {   // TodoList 컴포넌트는 더 이상 App에서 어�
             />
             <div className="list_wrapper">
                 {getSearchResult().map((it) => ( // map 메서드를 이용해 배열 todo의 모든 요소를 순차적으로 순회하며 HTML로 변환
-                    <TodoItem
-                     key={it.id}
-                     {...it}
-                     onUpdate={onUpdate}
-                     onDelete={onDelete}
-                    /> // TodoItem 컴포넌트에 onUpdate를 Props로 전달
+                    <TodoItem key={it.id} {...it} />    // TodoList 컴포넌트에서 기존에 Props로 전달하던 코드 역시 제거
                 ))}
             </div>
         </div>
