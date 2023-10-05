@@ -2,6 +2,7 @@ import {useState} from "react";
 import {getFormattedDate} from "../util";
 import Button from "./Button";
 import {useNavigate} from "react-router-dom";
+import "./Editor.css";
 
 const Editor = ({ initData, onSubmit }) => {
     const navigate = useNavigate(); // useNavigate를 호출하면 클라이언트 사이드 렌더링 방식으로 페이지를 이동하는 함수를 반환. 
@@ -59,7 +60,7 @@ const Editor = ({ initData, onSubmit }) => {
                     />
                 </div>
             </div>
-            <div className="editor_section">
+            <div className="editor_section bottom_section">
                 {/* 하단버튼 UI 구현 */}
                 <Button text={"취소하기"} onClick={handleOnGoBack} />
                 <Button text={"작성 완료"} type={"positive"} onClick={handleSubmit} />
