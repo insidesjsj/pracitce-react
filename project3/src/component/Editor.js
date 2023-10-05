@@ -1,8 +1,9 @@
 import {useState} from "react";
-import {getFormattedDate} from "../util";
+import {emotionList, getFormattedDate} from "../util";
 import Button from "./Button";
 import {useNavigate} from "react-router-dom";
 import "./Editor.css";
+import EmotionItem from "./EmotionItem";
 
 const Editor = ({ initData, onSubmit }) => {
     const navigate = useNavigate(); // useNavigate를 호출하면 클라이언트 사이드 렌더링 방식으로 페이지를 이동하는 함수를 반환. 
@@ -35,6 +36,13 @@ const Editor = ({ initData, onSubmit }) => {
     const handleOnGoBack = () => {
       navigate(-1); // -1 전달시 뒤로가기 이벤트 작동
     };
+
+    const handleChangeEmotion = (emotionId) => {
+        setState({
+            ...state,
+            emotionId,
+        });
+    };
     
     
     return (
@@ -48,8 +56,17 @@ const Editor = ({ initData, onSubmit }) => {
                 </div>
             </div>
             <div className="editor_section">
-                {/* 감정 */}
                 <h4>오늘의 감정</h4>
+                <div className="input_wrapper emotion_list_wrapper">
+                    {emotionList.map((it) => (
+                        <EmotionItem
+                            key={it.id}
+                            {...it}
+                            onClick={handleChangeEmotion}
+                            isSelected={state.emotionId === it.id}
+                        />
+                    ))}
+                </div>
             </div>
             <div className="editor_section">
                 <h4>오늘의 일기</h4>
