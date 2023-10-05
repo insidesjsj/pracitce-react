@@ -22,3 +22,6 @@
 : 감정 이미지 번호(emotionId): 숫자
 : 일기(content): 문자열
 [3] 따라서 사용자가 입력한 date, content, emotionId를 매개변수로 저장한 다음 함수 dispatch를 호출해야 함.
+
+2) UPDATE 기능 만들기
+- App 컴포넌트에 일기 아이템을 수정하는 함수 onUpdate 생성
