@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
-import {useReducer, useRef} from "react";
+import {useEffect, useReducer, useRef} from "react";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -19,15 +19,48 @@ function reducer(state, action) {
         case "DELETE": {
             return state.filter((it) => String(it.id) !== String(action.targetId));
         }
+        case "INIT": {
+            return action.data;
+        }
         default: {
             return state;
         }
     }
 }
+
+const mockData = [
+    {
+        id: "mock1",
+        date: new Date().getTime(),
+        content: "mock1",
+        emotionID: 1,
+    },
+    {
+        id: "mock2",
+        date: new Date().getTime(),
+        content: "mock2",
+        emotionID: 2,
+    },
+    {
+        id: "mock3",
+        date: new Date().getTime(),
+        content: "mock3",
+        emotionID: 3,
+    },
+];
 function App() {
     const [data, dispatch] = useReducer(reducer, []);
     const idRef = useRef(0);    // 아이템별 고유한 key
 
+    // useEffect의 콜백 함수는 마운트 시점에 호출되어 dispatch 호출
+    // action 객체의 type에는 초기화 또는 초깃값 설정을 의미하는 INIT을
+    // data에는 mockData를 전달
+    useEffect(() => {
+        dispatch({
+            type: "INIT",
+            data: mockData,
+        });
+    }, []);
     // 새 일기를 생성하는 onCreate 함수 생성
     const onCreate = ({date, content, emotionID}) => {
         dispatch({
