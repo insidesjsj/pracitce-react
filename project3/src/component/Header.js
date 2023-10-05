@@ -1,6 +1,7 @@
 import "./Header.css";
 
 const Header = ({ title, leftChild, rightChild }) => {
+
     return (
         <div className="Header">
             <div className="header_left">{leftChild}</div>

@@ -1,9 +1,13 @@
 import Header from "../component/Header";
 import Button from "../component/Button";
-import {useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import {DiaryStateContext} from "../App";
+import {getMonthRangeByDate} from "../util";
 
 const Home = () => {
+    const data = useContext(DiaryStateContext);
     const [pivotDate, setPivotDate] = useState(new Date());
+    const [filteredData, setFilteredData] = useState([]);
 
     // Header 컴포넌트의 Props(title)로 전달할 변수.
     const headerTitle = `${pivotDate.getFullYear()}년
@@ -17,6 +21,21 @@ const Home = () => {
     const onDecreaseMonth = () => {
         setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() -1));
     };
+
+    useEffect(() => {
+        if(data.length >= 1) {
+            const { beginTimeStamp, endTimeStamp } = getMonthRangeByDate(pivotDate);
+            setFilteredData(
+                data.filter(
+                    (it) =>
+                        beginTimeStamp <= it.date &&
+                        it.date <= endTimeStamp
+                )
+            );
+        } else {
+            setFilteredData([]);
+        }
+    }, [data, pivotDate]);
 
   return (
       <div>
