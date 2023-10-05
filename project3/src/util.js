@@ -24,3 +24,21 @@ export const getEmotionImgById = (emotionId) => {
             return null;
     }
 };
+
+// 날짜 입력 폼의 기본 값을 오늘 날짜로 자동 설정하기 위한 함수
+export const getFormattedDate = (targetDate) => {
+    let year = targetDate.getFullYear();
+    let month = targetDate.getMonth() + 1;
+    let date = targetDate.getDate();
+
+    // 월이 10이하면 앞에 0을 붙임 ex) 9월 => 09
+    if (month < 10) {
+        month = `0${month}`;
+    }
+
+    // 일이 10이하면 앞에 0을 붙임 ex) 1일 => 01
+    if (date < 10 ) {
+        date = `0${date}`;
+    };
+    return `${year}-${month}-${date}`;
+};
