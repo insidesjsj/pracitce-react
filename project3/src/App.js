@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
-import {useEffect, useReducer, useRef} from "react";
+import {useEffect, useReducer, useRef, useState} from "react";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -51,6 +51,7 @@ const mockData = [
 function App() {
     const [data, dispatch] = useReducer(reducer, []);
     const idRef = useRef(0);    // 아이템별 고유한 key
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
 
     // useEffect의 콜백 함수는 마운트 시점에 호출되어 dispatch 호출
     // action 객체의 type에는 초기화 또는 초깃값 설정을 의미하는 INIT을
@@ -60,6 +61,7 @@ function App() {
             type: "INIT",
             data: mockData,
         });
+        setIsDataLoaded(true);
     }, []);
     // 새 일기를 생성하는 onCreate 함수 생성
     const onCreate = ({date, content, emotionID}) => {
@@ -93,16 +95,22 @@ function App() {
             targetId,
         });
     };
-  return (
-    <div className="App">
-        <Routes>
-            <Route path={"/"} element={<Home />} />
-            <Route path={"/new"} element={<New />} />
-            <Route path={"/diary/:id"} element={<Diary />} />
-            <Route path={"/edit"} element={<Edit />} />
-        </Routes>
-    </div>
-  );
+    // isDataLoaded가 true 일 때 자식 컴포넌트들을 페이지에 마운트
+    if(!isDataLoaded){
+        return <div>데이터를 불러오는 중입니다.</div>;
+    } else {
+        return (
+            <div className="App">
+                <Routes>
+                    <Route path={"/"} element={<Home />} />
+                    <Route path={"/new"} element={<New />} />
+                    <Route path={"/diary/:id"} element={<Diary />} />
+                    <Route path={"/edit"} element={<Edit />} />
+                </Routes>
+            </div>
+        );
+    }
+
 }
 
 export default App;
