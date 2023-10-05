@@ -54,3 +54,7 @@ why? 컴포넌트도 함수이기 때문에 State를 업데이트 하거나 부�
 'DiaryDispatchContext'
 - 일기 State를 업데이트 하는 함수 onCreate, onUpdate, onDelete를 컴포넌트 트리에 공급
 - DiaryDispatchContext의 Provider 컴포넌트를 App의 자식으로 배치하고 Props(value)로 3개의 업데이트 함수 전달
+
+7) 라우팅 설정하기
+: Diary와 Edit은 '/diary/1' 형식의 URL 파라미터로 조회나 수정할 일기의 id를 받는다.
+: 따라서 동적 경로에 대응하기 위한 라우팅 설정이 필요하다
