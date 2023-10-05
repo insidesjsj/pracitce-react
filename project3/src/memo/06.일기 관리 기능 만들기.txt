@@ -43,3 +43,14 @@ why? 컴포넌트도 함수이기 때문에 State를 업데이트 하거나 부�
 - State 변수 isDataLoaded를 생성하고 초깃값으로 false 전달.
 - 데이터 로딩 모두 완료시 이 값을 true로 변경
 - isDataLoaded가 true 일 때 자식 컴포넌트들을 페이지에 마운트
+
+6) Context 설정하기
+: Context 를 이용해 Props Drilling 없이 [감정 일기장]의 모든 페이지에서 일기 State와 이를 업데이트하는 함수를 사용하도록 만든다.
+
+'DiaryStateContext'
+- App.js에서 일기 State 값을 공급
+- DiaryStateContext의 Provider 컴포넌트를 App의 자식으로 배치
+
+'DiaryDispatchContext'
+- 일기 State를 업데이트 하는 함수 onCreate, onUpdate, onDelete를 컴포넌트 트리에 공급
+- DiaryDispatchContext의 Provider 컴포넌트를 App의 자식으로 배치하고 Props(value)로 3개의 업데이트 함수 전달

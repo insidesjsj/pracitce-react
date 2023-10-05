@@ -1,10 +1,11 @@
 import './App.css';
-import {Link, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 import {useEffect, useReducer, useRef, useState} from "react";
+import React from "react";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -48,6 +49,8 @@ const mockData = [
         emotionID: 3,
     },
 ];
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 function App() {
     const [data, dispatch] = useReducer(reducer, []);
     const idRef = useRef(0);    // 아이템별 고유한 key
@@ -100,17 +103,26 @@ function App() {
         return <div>데이터를 불러오는 중입니다.</div>;
     } else {
         return (
-            <div className="App">
-                <Routes>
-                    <Route path={"/"} element={<Home />} />
-                    <Route path={"/new"} element={<New />} />
-                    <Route path={"/diary/:id"} element={<Diary />} />
-                    <Route path={"/edit"} element={<Edit />} />
-                </Routes>
-            </div>
+            <DiaryStateContext.Provider value={data}>
+                <DiaryDispatchContext.Provider
+                    value={{
+                        onCreate,
+                        onUpdate,
+                        onDelete,
+                    }}
+                >
+                    <div className="App">
+                        <Routes>
+                            <Route path={"/"} element={<Home />} />
+                            <Route path={"/new"} element={<New />} />
+                            <Route path={"/diary/:id"} element={<Diary />} />
+                            <Route path={"/edit"} element={<Edit />} />
+                        </Routes>
+                    </div>
+                </DiaryDispatchContext.Provider>
+            </DiaryStateContext.Provider>
         );
     }
-
 }
 
 export default App;
