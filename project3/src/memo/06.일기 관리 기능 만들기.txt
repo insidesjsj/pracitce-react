@@ -8,4 +8,17 @@
 - 일기 데이터는 모든 페이지에서 필요하므로 최상위 컴포넌트인 App에서 생성
 - useReducer로 App 컴포넌트에 일기 데이터를 관리하기 위한 State 생성
 
-2.
+2. 일기 State 업데이트 기능 구현
+- 일기 State 업데이트란 App 컴포넌트의 State인 data를 작성, 수정, 삭제하는 일체의 과정
+
+1) Create 기능 만들기
+- 새 일기를 추가할 때 key로 사용할 참조 객체로 idRef 생성
+: 앞으로 배열 형태의 일기를 리스트로 렌더링 할 때 아이템별로 고유한 key를 부여하기 위함
+
+- 새 일기를 생성하는 onCreate 함수 생성
+[1] 함수 onCreate는 일기를 생성하므로 앞서 만든 Editor 컴포넌트에서 호출
+[2] 새 일기를 작성할 때 입력하는 정보
+: 날짜(date): yyyy-mm-dd 형식의 문자열
+: 감정 이미지 번호(emotionId): 숫자
+: 일기(content): 문자열
+[3] 따라서 사용자가 입력한 date, content, emotionId를 매개변수로 저장한 다음 함수 dispatch를 호출해야 함.
