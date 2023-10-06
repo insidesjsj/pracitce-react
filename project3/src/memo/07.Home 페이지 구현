@@ -26,3 +26,12 @@ DiaryList
 
 2) 상단부 UI 구현
 - 정렬 기능이 있는 입력 폼, <새 일기 쓰기> 버튼의 UI 만들기
+
+3) 상단부 정렬 기능 구현
+- SortOptionList를 DiaryList 컴포넌트 외부에 작성
+: 정렬 기능 구현을 위해 <select> 태그의 옵션 리스트를 배열로 만든다. (정렬 조건은 '최신순', '오래된 순' 두가지로 설정
+
+- sortOptionList와 map 메서드를 이용해 <select>의 <option> 태그를 반복해 렌더링
+
+- 사용자가 선택한 정렬 유형을 저장하기 위해 sortType이라는 이름으로 State 생성
+- <select> 태그에서 사용할 onChangeSortType 생성
