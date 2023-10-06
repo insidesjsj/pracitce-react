@@ -53,3 +53,5 @@ DiaryList
 1) DiaryItem 컴포넌트 생성
 - component 폴더에 DiaryItem.js와 DiaryItem.css 생성
 - DiaryList에서 정렬된 일기 데이터인 sortedData의 값을 map을 이용해 리스트로 렌더링
+
+2) DiaryItem 공통 스타일 설정
