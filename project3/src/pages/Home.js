@@ -28,13 +28,16 @@ const Home = () => {
             const { beginTimeStamp, endTimeStamp } = getMonthRangeByDate(pivotDate);
             setFilteredData(
                 data.filter(
-                    (it) => beginTimeStamp <= it.date && it.date <= endTimeStamp
+                    (it) =>
+                        beginTimeStamp <= it.date &&
+                        it.date <= endTimeStamp
                 )
             );
         } else {
             setFilteredData([]);
         }
     }, [data, pivotDate]);
+
   return (
       <div>
           <Header
