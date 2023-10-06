@@ -21,3 +21,8 @@ DiaryList
 
 3. DiaryList와 정렬 기능 만들기
 1) Diary 컴포넌트 생성하기
+- component 폴더에 DiaryList.js 와 DiaryList.css를 생성
+- DiaryList를 Home 컴포넌트의 자식으로 배치
+
+2) 상단부 UI 구현
+- 정렬 기능이 있는 입력 폼, <새 일기 쓰기> 버튼의 UI 만들기
