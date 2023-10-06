@@ -35,3 +35,6 @@ DiaryList
 
 - 사용자가 선택한 정렬 유형을 저장하기 위해 sortType이라는 이름으로 State 생성
 - <select> 태그에서 사용할 onChangeSortType 생성
+
+4) 상단부의 <새 일기 쓰기>버튼 구현
+- 상단부 오른쪽에 있는 <새 일기 쓰기> 버튼 클릭시 New 페이지로 이동
