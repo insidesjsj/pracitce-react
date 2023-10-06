@@ -45,3 +45,11 @@ DiaryList
 - DiaryList에서는 Props로 받은 일기 데이터(data)를 사용자가 선택한 sortType에 따라 정렬하고 정렬된 일기 리스트를 페이지에 렌더링
 - 따라서 data나 sortType이 변할 때마다 sortedData를 업데이트
 - 정렬이 잘 되는지 확인하기 위해 App 컴포넌트의 목 데이터에서 date 값을 변경
+
+6) 일기 리스트 하단부 구현하기
+: DiaryList에서 정렬이 완료된 일기를 리스트로 보여주는 기능을 구현
+- 이 때 일기 리스트 각각의 아이템은 DiaryItem이라는 새로운 컴포넌트를 만들어 구현
+
+1) DiaryItem 컴포넌트 생성
+- component 폴더에 DiaryItem.js와 DiaryItem.css 생성
+- DiaryList에서 정렬된 일기 데이터인 sortedData의 값을 map을 이용해 리스트로 렌더링
