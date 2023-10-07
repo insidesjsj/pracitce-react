@@ -1,8 +1,10 @@
 import {useParams} from "react-router-dom";
+import useDiary from "../hooks/useDiary";
 
 const Diary = () => {
     // URL 파라미터 값 불러오기
     const { id } = useParams();
+    const data = useDiary(id);
 
     return (
         <div>
