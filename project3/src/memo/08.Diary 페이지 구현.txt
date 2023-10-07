@@ -28,3 +28,21 @@ Diary 페이지
 3) useDiary.js에서 매개변수로 저장한 id와 일치하는 일기 데이터를 반환
 
 4) 만약 URL 파라미터로 전달한 id와 일치하는 일기가 없으면 Home 페이지로 되돌려 보내는 기능
+
+
+2. 로딩 상태를 설정하여 오류 방지
+Diary 컴포넌트에서 useDiary를 호출해 일기 데이터를 불러오는 과정
+[1] Diary 컴포넌트 마운트
+useDiary 호출, State 변수 diary 생성 - diary 생성시 useState 인수 전달 X - diary == undefined
+
+[2] useDiary의 useEffect 콜백 함수 실행
+콜백 함수는 useDiary가 매개변수로 저장한 id와 일치하는 일기데이터로 diary 업데이트 -> useDiary 반환값이 일기 데이터로 업데이트
+
+[3] Diary 컴포넌트 업데이트
+커스텀 훅에서 State 업데이트가 일어나면 해당 커스텀 훅을 호출한 컴포넌트도 리렌더
+
+useDiary의 반환 데이터(data)는 처음에는 undefined 값이었다가 시간이 지난 다음 일기 데이터로 업데이트
+
+useDiary의 일기 데이터가 undefined일 때 배열에 접근하면 오류 발생
+: Diary 컴포넌트에서 useDiary 가 일기 데이터를 불러오기 전까지는 헤더나 뷰어 섹션을 렌더링 하면 안된다.
+
