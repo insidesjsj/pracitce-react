@@ -16,6 +16,10 @@ const Viewer = ({ content, emotionId }) => {
                     <img alt={emotionItem.name} src={emotionItem.img} />
                     <div className="emotion_descript">{emotionItem.name}</div>
                 </div>
+                <h4>오늘의 일기</h4>
+                <div className="content_wrapper">
+                    <p>{content}</p>
+                </div>
             </section>
         </div>
     );
