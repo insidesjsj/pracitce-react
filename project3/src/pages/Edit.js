@@ -10,7 +10,8 @@ const Edit = () => {
     const { id } = useParams();
     const data = useDiary(id);
     const navigate = useNavigate();
-    const { onDelete } = useContext(DiaryDispatchContext);
+    const { onDelete, onUpdate } = useContext(DiaryDispatchContext);
+
     const goBack = () => {
         navigate(-1);
     };
@@ -18,7 +19,16 @@ const Edit = () => {
     const onClickDelete = () => {
         if (window.confirm("일기를 정말 삭제할까요? 다시 복구되지 않아요!")) {
             onDelete(id);
-            navigate("/", { replace : true });
+            navigate("/", { replace: true });
+        }
+    };
+
+    const onSubmit = (data) => {
+        if (window.confirm("일기를 정말 수정할까요?")) {
+            const { date, content, emotionId } = data;
+            onUpdate(id, date, content, emotionId);
+            console.log(id, date, content, emotionId);
+            navigate("/", { replace: true });
         }
     };
 
@@ -34,6 +44,7 @@ const Edit = () => {
                 />
                 <Editor
                     initData={data}
+                    onSubmit={onSubmit}
                 />
             </div>
         );

@@ -82,6 +82,7 @@ function App() {
     };
 
     const onUpdate = (targetId, date, content, emotionId) => {
+        console.log(targetId, date, content, emotionId);
         dispatch({
            type: "UPDATE",
            data: {
