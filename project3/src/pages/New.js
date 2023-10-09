@@ -15,7 +15,6 @@ const New = () => {
 
     const onSubmit = (data) => {
         const { date, content, emotionId } = data;
-        console.log(date, content, emotionId);
         onCreate(date, content, emotionId);
         navigate("/", { replace: true });
     };
