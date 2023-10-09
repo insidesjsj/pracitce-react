@@ -7,6 +7,27 @@ import Edit from "./pages/Edit";
 import {useEffect, useReducer, useRef, useState} from "react";
 import React from "react";
 
+const mockData = [
+    {
+        id: "mock1",
+        date: new Date().getTime() -1,
+        content: "mock1",
+        emotionId: 1,
+    },
+    {
+        id: "mock2",
+        date: new Date().getTime() -2,
+        content: "mock2",
+        emotionId: 2,
+    },
+    {
+        id: "mock3",
+        date: new Date().getTime() -3,
+        content: "mock3",
+        emotionId: 3,
+    },
+];
+
 function reducer(state, action) {
     switch (action.type) {
         case "CREATE": {
@@ -28,27 +49,6 @@ function reducer(state, action) {
         }
     }
 }
-
-const mockData = [
-    {
-        id: "mock1",
-        date: new Date().getTime() -1,
-        content: "mock1",
-        emotionId: 1,
-    },
-    {
-        id: "mock2",
-        date: new Date().getTime() -2,
-        content: "mock2",
-        emotionId: 2,
-    },
-    {
-        id: "mock3",
-        date: new Date().getTime() -3,
-        content: "mock3",
-        emotionId: 3,
-    },
-];
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 function App() {
@@ -66,21 +66,22 @@ function App() {
         });
         setIsDataLoaded(true);
     }, []);
+
     // 새 일기를 생성하는 onCreate 함수 생성
-    const onCreate = ({date, content, emotionID}) => {
+    const onCreate = (date, content, emotionId) => {
         dispatch({
            type: "CREATE",
            data: {
                id: idRef.current,
                date: new Date(date).getTime(),
                content,
-               emotionID,
+               emotionId,
            },
         });
         idRef.current += 1; // 중복값 방지를 위해 현잿값 늘리기
     };
 
-    const onUpdate = ({targetId, date, content, emotionId}) => {
+    const onUpdate = (targetId, date, content, emotionId) => {
         dispatch({
            type: "UPDATE",
            data: {
