@@ -12,3 +12,14 @@
 2. DiaryItem 최적화
 - DiaryItem 컴포넌트는 Context에서 데이터를 받거나 Props 함수나 배열 같은 참조형 값도 받지 않는다.
 - React.memo를 이용해 Props를 기준으로 메모이제이션
+
+3. EmotionItem 최적화
+- EmotionItem은 Editor 컴포넌트에서 Props로 함수인 handleChangeEmotion을 받기 때문에 React.memo를 적용한다고 해도 최적화가 이루어지지 않음.
+- 컴포넌트가 리렌더 되면 함수 또한 다시 생성되기 때문임.
+- Editor 컴포넌트를 리렌더 해도 함수 handleChangeEmotion을 다시 생성하지 않도록 useCallback을 사용해 메모이제이션
+
+- setState에서 참조하는 state의 값이 마운트 이후 변하지 않기 때문에 State 최신값을 유지할 수 없어 정상적으로 상태가 업데이트 되지 않음.
+- 이 때 사용하는 기능이 바로 '함수형 업데이트'
+- 함수형 업데이트는 setState의 인수로 값이 아닌 함수를 전달하는 방법
+- 함수 handleChangeEmotion에서 함수형 업데이트 사용
+- EmotionItem에서 React.memo를 적용해 Props를 기준으로 최적화

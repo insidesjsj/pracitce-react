@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {emotionList, getFormattedDate} from "../util";
 import Button from "./Button";
 import {useNavigate} from "react-router-dom";
@@ -37,12 +37,12 @@ const Editor = ({ initData, onSubmit }) => {
       navigate(-1); // -1 전달시 뒤로가기 이벤트 작동
     };
 
-    const handleChangeEmotion = (emotionId) => {
-        setState({
+    const handleChangeEmotion = useCallback((emotionId) => {
+        setState((state) => ({
             ...state,
             emotionId,
-        });
-    };
+        }));
+    }, []);
 
     useEffect(() => {   // useEffect를 호출하고 Props로 받은 initData를 의존성 배열에 저장. 첫 번째 인수로 전달된 콜백 함수는 initData 값이 변경될 때마다 실행
         if (initData) { // initData가 falsy한 값이라면 아무일도 일어나지 않는다.
