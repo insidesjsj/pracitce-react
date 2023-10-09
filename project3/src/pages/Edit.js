@@ -4,6 +4,7 @@ import Header from "../component/Header";
 import Button from "../component/Button";
 import {useContext} from "react";
 import {DiaryDispatchContext} from "../App";
+import Editor from "../component/Editor";
 
 const Edit = () => {
     const { id } = useParams();
@@ -31,7 +32,9 @@ const Edit = () => {
                     leftChild={<Button text={"<뒤로 가기"} onClick={goBack} />}
                     rightChild={<Button text={"삭제하기"} type={"negative"} onClick={onClickDelete} />}
                 />
-                <div>일기 수정 페이지</div>
+                <Editor
+                    initData={data}
+                />
             </div>
         );
     }
