@@ -8,3 +8,7 @@
 
 2) New & Edit 페이지 분석
 - 날짜 변경, 일기 작성, 감정 이미지를 변경할 때 EmotionItem 컴포넌트가 모두 리렌더 된다.
+
+2. DiaryItem 최적화
+- DiaryItem 컴포넌트는 Context에서 데이터를 받거나 Props 함수나 배열 같은 참조형 값도 받지 않는다.
+- React.memo를 이용해 Props를 기준으로 메모이제이션

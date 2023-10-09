@@ -2,6 +2,7 @@ import "./DiaryItem.css";
 import {useNavigate} from "react-router-dom";
 import {getEmotionImgById} from "../util";
 import Button from "./Button";
+import React from "react";
 
 const DiaryItem = ({ id, emotionId, content, date}) => {
     console.log(emotionId);
@@ -37,4 +38,4 @@ const DiaryItem = ({ id, emotionId, content, date}) => {
         </div>
     );
 }
-export default DiaryItem;
+export default React.memo(DiaryItem);
