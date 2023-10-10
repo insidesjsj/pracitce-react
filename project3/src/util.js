@@ -87,3 +87,9 @@ export const getMonthRangeByDate = (date) => {
     ).getTime();
     return { beginTimeStamp, endTimeStamp };
 };
+
+export const setPageTitle = (title) => {
+    const titleElement = document.getElementsByTagName("title")[0]; // getElementsByTagName 메서드는 인수로 전달한 태그를 돔에서 모두 찾아 배열로 반환
+                                                                                                // 인수로 title을 전달하면, 반환 배열의 0번 요소에는 페이지 제목을 성정하는 <head>의 <title> 태그를 불러온다.
+    titleElement.innerText = title;
+};
