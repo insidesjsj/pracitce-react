@@ -63,14 +63,25 @@ function App() {
     const idRef = useRef(0);    // 아이템별 고유한 key
     const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-    // useEffect의 콜백 함수는 마운트 시점에 호출되어 dispatch 호출
-    // action 객체의 type에는 초기화 또는 초깃값 설정을 의미하는 INIT을
-    // data에는 mockData를 전달
     useEffect(() => {
-        dispatch({
-            type: "INIT",
-            data: mockData,
-        });
+        const rawData = localStorage.getItem("diary");
+        if (!rawData) {
+            setIsDataLoaded(true);
+            return;
+        }
+        const localData = JSON.parse(rawData);  // 일기 데이터가 있으면 JSON.parse를 이용해 객체로 복구한다.
+
+        // 일기 데이터의 배열 길이가 0이라면 일 데이터가 없는 것과 마찬가지 이므로 데이터를 불러오지 못한 때처럼 동작
+        if (localData.length === 0) {
+            setIsDataLoaded(true);
+            return;
+        }
+        // id 중복 방지 기능
+        localData.sort((a, b) => Number(b.id) - Number(a.id));  // 불러온 일기데이터를 id를 기준으로 내림차순 정렬
+        idRef.current = localData[0].id + 1;
+
+        // 불러온 일기 데이터로 일기 State 초기화
+        dispatch({ type: "INIT", data: localData});
         setIsDataLoaded(true);
     }, []);
 

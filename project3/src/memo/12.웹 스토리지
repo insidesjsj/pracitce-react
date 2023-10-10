@@ -23,3 +23,24 @@
 - 별도 라이브러리 설치 없이 window 객체를 이용하는 방식
 - window.sessionStorage 명령 사용
 - 탭 단위로 데이터 보관. 탭 종료시 데이터 사라짐(새로 고침해도 남아 있음.).
+
+사용법
+1) 로컬 스토리지
+[1] 데이터 생성/ 수정
+문자열: localStorage.setItem("key", value);
+객체: localStorage.setItem("key", JSON.stringify(value);
+
+[2] 데이터 꺼내기
+문자열: localStorage.getItem("key", value);
+객체: const  data = JSON.parse(localStorage.getItem("key"));
+
+주의) getItem 메서드로 꺼낸 값이 undefined인지 검사해야함.
+- getItem 메서드는 일치하는 데이터가 없으면 undefined 값을 반환.
+
+const rawData = JSON.parse(localStorage.getItem("key"));
+if(rawData){
+    const data = JSON.parse(rawData);
+}
+
+[3] 데이터 지우기
+localStorage.removeItem("key");
